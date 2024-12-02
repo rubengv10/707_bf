@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagem Escondida</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #1a1919;
+            color: #eedddd;
+            text-align: center;
+        }
+        #secreta {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #1a1919;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .botao {
+            padding: 10px 20px;
+            background-color: #ff0400;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .botao:hover {
+            background-color: #f44607;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mensagem Escondida</h1>
+    <p>ATENÇÃO! Com isto não espero que voltemos a falar como antes, ou até a falar sequer, só quero que saibas que peço desculpa.</p>
+    
+        <form id="mensagemForm" action="https://formspree.io/f/xjkvjjkd" method="POST" onsubmit="revelarMensagem(event)">
+        <label for="mensagem">Diz-me só porque não me avisaste, teria doído menos:</label><br>
+        <textarea id="mensagem" name="mensagem" rows="4" cols="50" placeholder="Escreve aqui" required></textarea><br>
+        <button class="botao" type="submit">Enviar</button>
+    </form>
+
+    <!-- Mensagem secreta -->
+    <div id="secreta">
+        <h2>Isto é privado, peço que não mostres nem partilhes com ninguém.</h2>
+        <p>Primeiramente queria te dizer obrigado, obrigado por parares para ler isto, não sei se é para aumentares o teu ego, ou porque se realmente queres saber o porquê do meu contacto repentino, bem de qualquer forma obrigado.</p>
+        <p>Segundamente, aprendi a fazer sites, muito fixe né? Isto é só o básico como podes ver, mas eu também só estou a usar html, 0 css e 0 js, então não tem como ficar muito bonito. </p>
+        <p>Sabes no inicio eu tive muito para baixo, muito triste, acho que se pode dizer que tive um free trial de depressão. Mas isso são águas passadas, o que quero dizer com isto é, eu sentia dor fisica, mesmo sabendo que nada me magoava fisicamente eu sentia, então quando isso tudo me passou eu pesquisei o porquê disso acontecer, sabias que o cérebro humano transforma fortes sentimentos em reações fisicas para saberes te expressar melhor? Por isso é que mesmo estando na pior posição de sempre, se estiveres com a pessoa amada ela torna-se confortavel, é o cérebro a dar-te essa ilusão. Loucura né? Mas bem, eu resumindo, eu  percebi que fui um pouco canalha. Mas porra custava muito dizer "Olha a Yasmin talzs, eu vou dzr que sim, tá na boa?" Eu diria que sim (não estaria, mas eu fingia) e estaria mais preparado, provavelmente não teria acontecido tudo aquilo. </p>
+        <p>Mas bem, isso são águas passadas, o que importa é o futuro e é por isso que eu estou aqui, eu quero (pelo menos tentar) voltar a ser amigos, achas na boa? </p>
+        <p>Desculpa, gastei toda a inspiração poética para fazer um pedido de desculpas gigante no da Yasmin e neste teu inicio, sim também fiz um arecido com isto para a Yasmin. </p>
+        <p>Então eu só posso dizer uma coisa... </p>
+
+         <p>DESCULPA POR TER AGIDO QUE NEM CANALHA</p>
+
+         <p>Mas atenção, não me entendas errado, eu fiz merda, mas de nós dois tu foste o primeiro, também acho que mereço um pedido de desculpas vindo de ti. O meu eu tentei o melhor espero que entendas.</p>
+
+         <p>Ah, e uma última coisa, se precisares sabes onde me podes encontrar e estás desbloqueado em todas as redes sociais. Agora eu não te incomodo mais, se tu quiseres esta é a última vez que vês algo meu, mas se não quiseres, vês sempre que quiseres tu decides, eu não tenho direito a opinar. Mas depois diz-me se desculpas ou não, vale muito para mim.</p>
+    </div>
+
+    <script>
+        function revelarMensagem(event) {
+            // Impede que o formulário envie os dados antes de revelar a mensagem
+            event.preventDefault();
+            
+            // Mostra a mensagem secreta
+            document.getElementById('secreta').style.display = 'block';
+            
+            // Opcional: Envia o formulário via Formspree
+            const form = event.target;
+            fetch(form.action, {
+                method: form.method,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams(new FormData(form)).toString()
+            }).then(response => {
+                if (response.ok) {
+                    alert('Mensagem enviada com sucesso!');
+                } else {
+                    alert('Houve um problema ao enviar a mensagem.');
+                }
+            }).catch(error => {
+                alert('Erro ao enviar a mensagem. Tente novamente.');
+            });
+        }
+    </script>
+</body>
+</html>
